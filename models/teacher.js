@@ -10,17 +10,23 @@ module.exports = function(sequelize, DataTypes) {
       first_name: {
         type: DataTypes.STRING,
         allowNull: false,
-        len: [1]
+        validate: {
+            len: [1]
+        }
       },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
-        len: [1]
+        validate: {
+            len: [1]
+        }
       },
       home_studio: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        len: [1]
+        validate: {
+            len: [1]
+        }
       }
     });
   
