@@ -1,8 +1,10 @@
-INSERT INTO students (last_name, first_name, date_of_birth, student_status, studio)
+USE students_database;
 
-VALUES  ('Johnson', 'Suzy', '10/11/2009', 'Intro', 'La Mesa'),
-        ('Simpson', 'Johnny', '02/14/2014', 'Current', 'Santee'),
-        ('Poppy', 'Wesley', '09/02/2012', 'Current', 'Bonita'),
-        ('Wilson', 'Cindy', '08/11/2011', 'Done', 'La Mesa');
+INSERT INTO students (last_name, first_name, date_of_birth, student_status, studio, createdAt, updatedAt)
 
-SELECT * FROM students
+VALUES  ('Johnson', 'Suzy', '2009-10-11', 'Intro', 'La Mesa', '1000-01-01 00:00:00', '1000-01-01 00:00:00'),
+        ('Simpson', 'Johnny', '2014-02-14', 'Current', 'Santee', '1000-01-01 00:00:00', '1000-01-01 00:00:00'),
+        ('Poppy', 'Wesley', '2012-09-02', 'Current', 'Bonita', '1000-01-01 00:00:00', '1000-01-01 00:00:00'),
+        ('Wilson', 'Cindy', '2011-08-11', 'Done', 'La Mesa', '1000-01-01 00:00:00', '1000-01-01 00:00:00');
+        
+SELECT * FROM students;
