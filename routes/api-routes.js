@@ -10,7 +10,7 @@ module.exports = function(app) {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id
+      id: req.user.id,
     });
   });
 
@@ -20,12 +20,12 @@ module.exports = function(app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     })
       .then(() => {
         res.redirect(307, "/api/login");
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(401).json(err);
       });
   });
@@ -46,8 +46,32 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
       });
     }
+  });
+
+  // Route for getting student data for table
+  app.get("/api/students", function(req, res) {
+    db.Student.findAll({}).then(function(dbStudent) {
+      res.json(dbStudent);
+    });
+  });
+
+  // Route for posting student data
+  app.post("/api/students", function(req, res) {
+    db.Student.create({
+      last_name: req.body.lastName,
+      first_name: req.body.firstName,
+      date_of_birth: req.body.birthdate,
+      student_status: req.body.inputStatus,
+      studio: req.body.inputStudio,
+    })
+      .then((dbStudent) => {
+        res.json(dbStudent);
+      })
+      .catch((err) => {
+        res.status(401).json(err);
+      });
   });
 };
