@@ -17,8 +17,8 @@ module.exports = function (sequelize, DataTypes) {
     },
 
     date_of_birth: {
-      type: DataTypes.DATE,
-      allowNull: false,
+      type: DataTypes.DATEONLY,
+      allowNull: false
     },
 
     student_status: {
