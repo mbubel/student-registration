@@ -23,4 +23,8 @@ module.exports = function(app) {
   app.get("/dashboard", isAuthenticated, (req, res) => {
     res.render("dashboard");
   });
+
+  app.get("/students", isAuthenticated, (req, res) => {
+    res.render("index");
+  });
 };
