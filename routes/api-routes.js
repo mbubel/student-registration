@@ -74,4 +74,17 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
+
+  // PUT route for updating posts
+  app.put("/api/students", function(req, res) {
+    db.Student.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
 };
