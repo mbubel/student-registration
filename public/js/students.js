@@ -17,6 +17,11 @@ $(document).ready(() => {
         .find(":selected")
         .text(),
     };
-    alert(JSON.stringify(postData));
+    $.ajax("/api/students", {
+      type: "POST",
+      data: postData,
+    }).then(() => {
+      alert("we figgured it out");
+    });
   });
 });
