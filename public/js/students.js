@@ -7,6 +7,8 @@ $(document).ready(() => {
   $("#registerStudent").on("click", () => {
     // eslint-disable-next-line prefer-const
 
+    // Grab the studio name (string) that was registered with the student.
+    // Then convert it to a studio_id (integer) so that the students table can be linked to the studios table.
     const studioName = $("#inputStudio")
       .find(":selected")
       .text();
@@ -92,7 +94,7 @@ $(document).ready(() => {
           }
         },
         {
-          title: "Studio_ID",
+          title: "Studio Id",
           field: "studio_id",
           editor: "select",
           editorParams: {
