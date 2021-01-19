@@ -1,6 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
-    var Studio = sequelize.define("Studio", {
-      name: {
+  const Studio = sequelize.define(
+    "Studio",
+    {
+      studio_name: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -9,16 +11,20 @@ module.exports = function(sequelize, DataTypes) {
       },
       phone_number: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       email_address: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len: [1]
+          len: [1],
+          isEmail: true
         }
       }
-    });
-   
-    return Studio;
-  };
+    },
+    {
+      timestamps: false
+    }
+  );
+  return Studio;
+};
