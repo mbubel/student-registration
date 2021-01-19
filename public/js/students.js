@@ -6,6 +6,22 @@ $(document).ready(() => {
   // Adding new student to database
   $("#registerStudent").on("click", () => {
     // eslint-disable-next-line prefer-const
+
+    const studioName = $("#inputStudio")
+      .find(":selected")
+      .text();
+
+    switch (studioName) {
+      case "La Mesa":
+        defineStudioId = 1;
+        break;
+      case "Santee":
+        defineStudioId = 2;
+        break;
+      case "Bonita":
+        defineStudioId = 3;
+    }
+
     let postData = {
       lastName: $("#lastName")
         .val()
@@ -19,9 +35,7 @@ $(document).ready(() => {
       inputStatus: $("#inputStatus")
         .find(":selected")
         .text(),
-      inputStudio: $("#inputStudio")
-        .find(":selected")
-        .text()
+      inputStudio: defineStudioId
     };
     $.ajax("/api/students", {
       type: "POST",
@@ -78,15 +92,15 @@ $(document).ready(() => {
           }
         },
         {
-          title: "Studio",
-          field: "studio",
+          title: "Studio_ID",
+          field: "studio_id",
           editor: "select",
           editorParams: {
-            "La Mesa": "La Mesa",
+            "1": 1,
             // eslint-disable-next-line prettier/prettier
-            "Santee": "Santee",
+            "2": 2,
             // eslint-disable-next-line prettier/prettier
-            "Bonita": "Bonita"
+            "3": 3
           }
         }
       ]
@@ -109,7 +123,7 @@ $(document).ready(() => {
           newData[i].first_name !== currentData[i].first_name ||
           newData[i].date_of_birth !== currentData[i].date_of_birth ||
           newData[i].student_status !== currentData[i].student_status ||
-          newData[i].studio !== currentData[i].studio
+          newData[i].studio_id !== currentData[i].studio_id
         ) {
           updateData(newData[i]);
         }

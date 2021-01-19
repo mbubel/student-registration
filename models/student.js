@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var Student = sequelize.define("Student", {
     last_name: {
       type: DataTypes.STRING,
@@ -29,8 +29,8 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
 
-    studio: {
-      type: DataTypes.STRING,
+    studio_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
         len: [1]
