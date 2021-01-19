@@ -16,10 +16,6 @@ li {
   list-style: none;
   margin-top: 1%;
 }
-h1 {
-  margin-left: 3%;
-}
-
-h2 {
+#dashboardHeaders {
   margin-left: 3%;
 }
