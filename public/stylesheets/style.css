@@ -9,4 +9,17 @@ form.login {
 #loginButton {
   margin-top: 4%;
 }
+.container {
+  text-align: center;
+}
+li {
+  list-style: none;
+  margin-top: 1%;
+}
+h1 {
+  margin-left: 3%;
+}
 
+h2 {
+  margin-left: 3%;
+}
