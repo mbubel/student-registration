@@ -28,3 +28,7 @@ module.exports = function(app) {
     res.render("index");
   });
 };
+
+app.get("/classes", isAuthenticated, (req, res) => {
+  res.render("classes");
+});
