@@ -9,17 +9,17 @@ module.exports = function(sequelize, DataTypes) {
       },
 
       start_time: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false
       },
 
       end_time: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false
       },
 
       teacher: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             len: [1]

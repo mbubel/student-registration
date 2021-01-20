@@ -11,7 +11,7 @@ module.exports = function(app) {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id
+      id: req.user.id,
     });
   });
 
@@ -21,12 +21,12 @@ module.exports = function(app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     })
       .then(() => {
         res.redirect(307, "/api/login");
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(401).json(err);
       });
   });
@@ -47,7 +47,7 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
       });
     }
   });
@@ -55,8 +55,8 @@ module.exports = function(app) {
   // Route for getting student data for table
   app.get("/api/students", (req, res) => {
     db.Student.findAll({
-      include: [db.Studio]
-    }).then(dbStudent => {
+      include: [db.Studio],
+    }).then((dbStudent) => {
       res.json(dbStudent);
     });
   });
@@ -68,12 +68,12 @@ module.exports = function(app) {
       first_name: req.body.firstName,
       date_of_birth: req.body.birthdate,
       student_status: req.body.inputStatus,
-      studio_id: req.body.inputStudio
+      studio_id: req.body.inputStudio,
     })
-      .then(dbStudent => {
+      .then((dbStudent) => {
         res.json(dbStudent);
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(401).json(err);
       });
   });
@@ -82,26 +82,35 @@ module.exports = function(app) {
   app.put("/api/students", (req, res) => {
     db.Student.update(req.body, {
       where: {
-        id: req.body.id
-      }
-    }).then(dbPost => {
+        id: req.body.id,
+      },
+    }).then((dbPost) => {
       res.json(dbPost);
     });
   });
-};
-
-app.post("/api/classes", (req, res) => {
-  db.AvailableClasses.create({
-    studio: req.body.studio,
-    day_of_week: req.body.day,
-    start_time: req.body.start_time,
-    end_time: req.body.end_time,
-    teacher: req.body.teacher
-  })
-    .then(dbAvailableClasses => {
+  app.get("/api/classes", (req, res) => {
+    db.AvailableClasses.findAll({
+      // include: [db.Studio],
+    }).then((dbAvailableClasses) => {
       res.json(dbAvailableClasses);
-    })
-    .catch(err => {
-      res.status(401).json(err);
     });
-});
+  })
+  app.post("/api/classes", (req, res) => {
+    console.log(req.body);
+
+    db.AvailableClasses.create({
+      studio: req.body.studio,
+      day_of_week: req.body.day,
+      start_time: req.body.start_time,
+      end_time: req.body.end_time,
+      teacher: req.body.teacher,
+    })
+      .then((dbAvailableClasses) => {
+        res.json(dbAvailableClasses);
+      })
+      .catch((err) => {
+        res.status(401).json(err);
+      });
+  });
+  
+};
