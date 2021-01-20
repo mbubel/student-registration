@@ -1,4 +1,37 @@
-form.signup,
-form.login {
-  margin-top: 50px;
+#submitButton {
+  margin-top: 4%;
+}
+
+#loginButton {
+  margin-top: 4%;
+}
+#dashboard-container {
+  text-align: center;
+}
+li {
+  list-style: none;
+  margin-top: 1%;
+  margin-right: 3%;
+}  
+
+img {
+  height: 100px;
+  width: 300px;
+}
+
+#newStudentRegistration {
+  margin-top: 3%;
+  text-align: center;
+}
+
+#navLogo {
+  height: 50px;
+  width: 150px;
+  position: absolute;
+  left: calc((180% - 195px) / 2);
+
+}
+
+#navBar {
+border-bottom: 2px solid black ;
 }
