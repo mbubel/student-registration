@@ -61,10 +61,16 @@ img {
 }
 
 #navLogo {
-  height: 50px;
-  width: 150px;
+  height: 59px;
   position: absolute;
-  left: calc((180% - 195px) / 2);
+  left: calc((155% - 195px) / 2);
+}
+
+#dashBoardLogo {
+  position: center;
+  margin-bottom: 10px;
+  margin-top: 15px;
+
 }
 
 #navBar {
