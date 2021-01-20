@@ -89,3 +89,19 @@ module.exports = function(app) {
     });
   });
 };
+
+app.post("/api/classes", (req, res) => {
+  db.AvailableClasses.create({
+    studio: req.body.studio,
+    day_of_week: req.body.day,
+    start_time: req.body.start_time,
+    end_time: req.body.end_time,
+    teacher: req.body.teacher
+  })
+    .then(dbAvailableClasses => {
+      res.json(dbAvailableClasses);
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+});
