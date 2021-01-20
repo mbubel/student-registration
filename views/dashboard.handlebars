@@ -1,31 +1,62 @@
-<body>
+<body id="dashboard-body">
   <div id="buttons">
 
-    <div class="container" id="dashboard-container">    <img src="/assets/images/Logo.png" />
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/logout">
+            Logout
+          </a>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container text-center">
+      <img class="mt-4" src="/assets/images/Logo.png" />
+    </div>
 
-      <ul>
-        <li>
-          <a href="/students">
-            <button class="btn btn-primary">
-              New Student Registration
-            </button>
-          </a>
-        </li>
-        <li>
-          <a href="/classes">
-            <button class="btn btn-primary">
-              Classes
-            </button>
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <button class="btn btn-primary">
-              Other button
-            </button>
-          </a>
-        </li>
-      </ul>
+
+    <div class="container mt-5" id="dashboard-container">
+
+      <div class="row">
+        <div class="my-4">
+          <h1 class="text-decoration-underline">Welcome, <span class="member-name"></span>!</h1>
+        </div>
+      </div>
+
+      <div class="row align-items-center mt-4 pb-5">
+        <div class="col-5 text-start pb-5">
+          <ul>
+            <li class="mb-3">
+              <a href="/students">
+                <button class="btn btn-info">
+                  New Student Registration
+                </button>
+              </a>
+            </li>
+            <li li class="mb-3">
+              <a href="/classes">
+                <button class="btn btn-info">
+                  Classes
+                </button>
+              </a>
+            </li>
+            <li li class="mb-3">
+              <a href="/">
+                <button class="btn btn-info">
+                  Other button
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <div id="added-artwork"></div>
+        </div>
+      </div>
+      
     </div>
   </div>
+  <script src="js/members.js"></script>
 </body>
