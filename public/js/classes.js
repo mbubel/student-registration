@@ -4,29 +4,51 @@ $(document).ready(() => {
   // // eslint-disable-next-line prefer-const
   // let dateEditor;
   // Adding new class to database on click
-  $("#registerClass").on("click", (e) => {
+
+  let defineStudioId = 0;
+
+  $("#registerClass").on("click", e => {
     e.preventDefault();
     // eslint-disable-next-line prefer-const
-    let postData = {
-      studio: $("#studio")
-        .find(":selected")
-        .text(),
+
+    // Grab the studio name (string) that was registered when the class was created.
+    // Then convert it to a studio_id (integer) so that the students table can be linked to the studios table.
+    // eslint-disable-next-line prettier/prettier
+    let studioName = $("#studio").find(":selected").text().trim();
+
+    switch (studioName) {
+      case "La Mesa":
+        defineStudioId = 1;
+        break;
+      case "Santee":
+        defineStudioId = 2;
+        break;
+      case "Bonita":
+        defineStudioId = 3;
+    }
+
+    const postData = {
+      studio: defineStudioId,
       day: $("#day")
         .find(":selected")
-        .text(),
+        .text()
+        .trim(),
       start_time: $("#start_time")
         .find(":selected")
-        .text(),
+        .text()
+        .trim(),
       end_time: $("#end_time")
         .find(":selected")
-        .text(),
+        .text()
+        .trim(),
       teacher: $("#teacher")
         .find(":selected")
-        .text(),
+        .text()
+        .trim()
     };
     $.ajax("/api/classes", {
       type: "POST",
-      data: postData,
+      data: postData
     }).then(() => {
       location.reload();
       alert("we figgured it out");

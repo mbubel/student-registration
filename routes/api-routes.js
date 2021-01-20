@@ -99,11 +99,11 @@ module.exports = function(app) {
     console.log(req.body);
 
     db.AvailableClasses.create({
-      studio: req.body.studio,
+      studio_id: req.body.studio,
       day_of_week: req.body.day,
       start_time: req.body.start_time,
       end_time: req.body.end_time,
-      teacher: req.body.teacher,
+      teacher: req.body.teacher
     })
       .then((dbAvailableClasses) => {
         res.json(dbAvailableClasses);
