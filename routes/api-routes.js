@@ -66,7 +66,7 @@ module.exports = function(app) {
       first_name: req.body.firstName,
       date_of_birth: req.body.birthdate,
       student_status: req.body.inputStatus,
-      studio: req.body.inputStudio
+      studio_id: req.body.inputStudio
     })
       .then(dbStudent => {
         res.json(dbStudent);
