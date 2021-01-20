@@ -13,7 +13,6 @@ function addQuote() {
       addQuote();
     } else {
       //Add to html
-      console.log(`${data[pickQuote].text} -${data[pickQuote].author}`);
       $("#login-quote").html(`"${data[pickQuote].text}"`);
       $("#login-author").html(`-${data[pickQuote].author}`);
       $("#signup-quote").html(`"${data[pickQuote].text}"`);
