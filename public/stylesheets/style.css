@@ -1,9 +1,14 @@
-#submitButton, #loginButton {
+#submitButton,
+#loginButton {
   margin-top: 4%;
+}
+button {
+  white-space: nowrap;
+  text-align: center;
 }
 
 .front-page-body {
-  background-color: #B7E9F7;
+  background-color: #b7e9f7;
   height: 100vh;
 }
 
@@ -30,7 +35,7 @@ li {
   list-style: none;
   margin-top: 1%;
   margin-right: 3%;
-}  
+}
 
 img {
   height: 100px;
@@ -47,9 +52,12 @@ img {
   width: 150px;
   position: absolute;
   left: calc((180% - 195px) / 2);
-
 }
 
 #navBar {
-border-bottom: 2px solid black ;
+  border-bottom: 2px solid black;
+}
+
+#teacher {
+  width: auto;
 }
