@@ -18,3 +18,20 @@ img {
   height: 100px;
   width: 300px;
 }
+
+#newStudentRegistration {
+  margin-top: 3%;
+  text-align: center;
+}
+
+#navLogo {
+  height: 50px;
+  width: 150px;
+  position: absolute;
+  left: calc((180% - 195px) / 2);
+
+}
+
+#navBar {
+border-bottom: 2px solid black ;
+}
