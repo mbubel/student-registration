@@ -29,6 +29,7 @@ module.exports = function(app) {
   });
 };
 
-app.get("/classes", isAuthenticated, (req, res) => {
-  res.render("classes");
-});
+
+// app.get("/classes", isAuthenticated, (req, res) => {
+//   res.render("classes");
+// });

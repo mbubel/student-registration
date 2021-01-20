@@ -1,7 +1,3 @@
-form.signup,
-form.login {
-  margin-top: 50px;
-}
 #submitButton {
   margin-top: 4%;
 }
@@ -9,13 +5,16 @@ form.login {
 #loginButton {
   margin-top: 4%;
 }
-.container {
+#dashboard-container {
   text-align: center;
 }
 li {
   list-style: none;
   margin-top: 1%;
-}
-#dashboardHeaders {
-  margin-left: 3%;
+  margin-right: 3%;
+}  
+
+img {
+  height: 100px;
+  width: 300px;
 }
