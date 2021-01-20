@@ -1,36 +1,49 @@
-#submitButton,
-#loginButton {
-  margin-top: 4%;
-}
+
 button {
   white-space: nowrap;
   text-align: center;
 }
 
+
+/* Login and Signup pages*/
 .front-page-body {
   background-color: #b7e9f7;
   height: 100vh;
 }
-
 .front-image {
   height: 150px;
   background-image: url(../assets/images/front-image.jpg);
   background-size: cover;
   background-position: center;
 }
-
 .front-page-top-container {
   background-color: white;
   border-radius: 5px;
 }
-
 .front-page-middle-container {
   background-color: #ffe7ce;
 }
+#submitButton,
+#loginButton {
+  margin-top: 4%;
+}
 
+/* Dashboard page */
+#dashboard-body {
+  background-color: #b7e9f7;
+}
 #dashboard-container {
   text-align: center;
+  background-color: white;
+  border-radius: 5px;
 }
+#added-artwork {
+  height: 25rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 5px;
+}
+
 li {
   list-style: none;
   margin-top: 1%;

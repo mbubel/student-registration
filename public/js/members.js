@@ -1,7 +1,18 @@
 $(document).ready(() => {
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
+
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
   });
+
+  //Add random artwork image
+  function addImage() {
+    let imageDiv = $("#added-artwork");
+
+    let randomNumber = Math.floor(Math.random() * (12))+1;
+
+    imageDiv.css("background-image", `url(./assets/images/art${randomNumber}.jpg)`);
+  }
+
+  addImage();
+
 });
