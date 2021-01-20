@@ -60,7 +60,6 @@ module.exports = function(app) {
       res.json(dbStudent);
     });
   });
-
   // Route for posting student data
   app.post("/api/students", (req, res) => {
     db.Student.create({
@@ -77,20 +76,20 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-
   // PUT route for updating posts
   app.put("/api/students", (req, res) => {
     db.Student.update(req.body, {
       where: {
         id: req.body.id,
       },
-    }).then((dbPost) => {
-      res.json(dbPost);
+    }).then((dbStudent) => {
+      res.json(dbStudent);
     });
   });
+
   app.get("/api/classes", (req, res) => {
     db.AvailableClasses.findAll({
-      // include: [db.Studio],
+      include: [db.Studio],
     }).then((dbAvailableClasses) => {
       res.json(dbAvailableClasses);
     });
@@ -111,6 +110,24 @@ module.exports = function(app) {
       .catch((err) => {
         res.status(401).json(err);
       });
+  });
+  app.put("/api/classes", (req, res) => {
+    db.AvailableClasses.update(req.body, {
+      where: {
+        id: req.body.id,
+      },
+    }).then((dbAvailableClasses) => {
+      res.json(dbAvailableClasses);
+    });
+  });
+  app.delete("/api/classes/:id", (req, res) => {
+    db.AvailableClasses.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then((dbAvailableClasses) => {
+      res.json(dbAvailableClasses);
+    });
   });
   
 };
