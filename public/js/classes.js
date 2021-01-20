@@ -51,142 +51,126 @@ $(document).ready(() => {
       data: postData
     }).then(() => {
       location.reload();
-      alert("we figgured it out");
+      //alert("we figgured it out");
     });
   });
 
-  //     // Getting data
-  //     function getClassTable() {
-  //       $.get("/api/classes", data => {
-  //         // Calls function to add the data to table
-  //         addToTabulatorTable(data);
-  //       });
-  //     }
+      // Getting data
+      function getClassTable() {
+        $.get("/api/classes", data => {
+          // Calls function to add the data to table
+          addToTabulatorTable(data);
+        });
+      }
 
-  //     // Adding data to page using Tabulator
-  //     function addToTabulatorTable(tableData) {
-  //       table = new Tabulator("#student-table", {
-  //         data: tableData, //load row data from array
-  //         layout: "fitColumns", //fit columns to width of table
-  //         columns: [
-  //           {
-  //             title: "First Name",
-  //             field: "first_name",
-  //             editor: "input",
-  //             validator: ["required", "string"]
-  //           },
-  //           {
-  //             title: "Last Name",
-  //             field: "last_name",
-  //             editor: "input",
-  //             validator: ["required", "string"]
-  //           },
-  //           {
-  //             title: "Date of Birth",
-  //             field: "date_of_birth",
-  //             editor: dateEditor,
-  //             validator: "required"
-  //           },
-  //           {
-  //             title: "Status",
-  //             field: "student_status",
-  //             editor: "select",
-  //             editorParams: {
-  //               Intro: "Intro",
-  //               // eslint-disable-next-line prettier/prettier
-  //               "Current": "Current",
-  //               "On a Break": "On a Break",
-  //               // eslint-disable-next-line prettier/prettier
-  //               "Done": "Done"
-  //             }
-  //           },
-  //           {
-  //             title: "Studio",
-  //             field: "studio",
-  //             editor: "select",
-  //             editorParams: {
-  //               "La Mesa": "La Mesa",
-  //               // eslint-disable-next-line prettier/prettier
-  //               "Santee": "Santee",
-  //               // eslint-disable-next-line prettier/prettier
-  //               "Bonita": "Bonita"
-  //             }
-  //           }
-  //         ]
-  //       });
-  //     }
+      // Adding data to page using Tabulator
+      function addToTabulatorTable(tableData) {
+        table = new Tabulator("#classes-table", {
+          data: tableData, //load row data from array
+          layout: "fitColumns", //fit columns to width of table
+          columns: [
+            {
+              title: "Studio",
+              field: "Studio.studio_name",
+              editor: "select",
+              editorParams: {
+                "La Mesa": "La Mesa",
+                // eslint-disable-next-line prettier/prettier
+                "Santee": "Santee",
+                // eslint-disable-next-line prettier/prettier
+                "Bonita": "Bonita"
+              }
+            },
+            {
+              title: "Day of the Week",
+              field: "day_of_week",
+              editor: "select",
+              editorParams: {
+                "Monday": "Monday",
+                "Tuesday": "Tuesday",
+                "Wednesday": "Wednesday",
+                "Thursday": "Thursday",
+                "Friday": "Friday",
+                "Saturday": "Saturday"
+              }
+            },
+            {
+              title: "Start Time",
+              field: "start_time",
+            },
+            {
+              title: "End Time",
+              field: "end_time",
+            },
+            {
+              title: "Teacher",
+              field: "teacher",
+            },
+            {
+              formatter:"buttonCross",
+              width:30,
+              hozAlign:"center",
+              cellClick: deleteRow}
+          ]
+        });
+      }
 
-  //     // If save button is clicked, compare data
-  //     $("#save").on("click", () => {
-  //       // eslint-disable-next-line prefer-const
-  //       let newData = table.getData();
+      // If save button is clicked, compare data
+      $("#save").on("click", () => {
+        // eslint-disable-next-line prefer-const
+        let newData = table.getData();
 
-  //       $.get("/api/students", data => {
-  //         // Updates current saved data
-  //         // eslint-disable-next-line prefer-const
-  //         let currentData = data;
+        $.get("/api/classes", data => {
+          // Updates current saved data
+          // eslint-disable-next-line prefer-const
+          let currentData = data;
 
-  //         for (let i = 0; i < newData.length; i++) {
-  //           if (
-  //             newData[i].last_name !== currentData[i].last_name ||
-  //             newData[i].first_name !== currentData[i].first_name ||
-  //             newData[i].date_of_birth !== currentData[i].date_of_birth ||
-  //             newData[i].student_status !== currentData[i].student_status ||
-  //             newData[i].studio !== currentData[i].studio
-  //           ) {
-  //             updateData(newData[i]);
-  //           }
-  //         }
-  //       });
-  //     });
+          for (let i = 0; i < newData.length; i++) {
+            if (
+              newData[i].day_of_week !== currentData[i].day_of_week || newData[i].Studio.studio_name !== currentData[i].Studio.studio_name
+            ) {
+              switch (newData[i].Studio.studio_name) {
+                case "La Mesa":
+                  newData[i].Studio.id = 1;
+                  newData[i].studio_id = 1;
+                  break;
+                case "Santee":
+                  newData[i].Studio.id = 2;
+                  newData[i].studio_id = 2;
+                  break;
+                case "Bonita":
+                  newData[i].Studio.id = 3;
+                  newData[i].studio_id = 3;
+              }
+              updateData(newData[i]);
+            }
+          }
+        });
+      });
 
-  //     // Update data
-  //     function updateData(row) {
-  //       $.ajax({
-  //         method: "PUT",
-  //         url: "/api/students",
-  //         data: row
-  //       }).then(() => {
-  //         location.reload();
-  //       });
-  //     }
+      // Update data
+      function updateData(row) {
+        $.ajax({
+          method: "PUT",
+          url: "/api/classes",
+          data: row
+        }).then(() => {
+          location.reload();
+        });
+      }
 
-  //     // Create Date Editor (taken from tabulator docs)
-  //     dateEditor = function(cell, onRendered, success, cancel) {
-  //       //create and style input
-  //       // eslint-disable-next-line no-var
-  //       var cellValue = moment(cell.getValue(), "YYYY-MM-DD").format("YYYY-MM-DD"),
-  //         input = document.createElement("input");
+      //Deleting
+      function deleteRow(e, cell) {
+        let cellId = cell.getRow().getData().id;
+        $.ajax({
+          method: "DELETE",
+          url: "/api/classes/" + cellId
+        }).then(() => {
+          location.reload();
+        });
+      }
 
-  //       input.setAttribute("type", "date");
 
-  //       input.style.padding = "4px";
-  //       input.style.width = "100%";
-  //       input.style.boxSizing = "border-box";
-
-  //       input.value = cellValue;
-
-  //       // eslint-disable-next-line prefer-arrow-callback
-  //       onRendered(function() {
-  //         input.focus();
-  //         input.style.height = "100%";
-  //       });
-
-  //       function onChange() {
-  //         // eslint-disable-next-line eqeqeq
-  //         if (input.value != cellValue) {
-  //           success(moment(input.value, "YYYY-MM-DD").format("YYYY-MM-DD"));
-  //         } else {
-  //           cancel();
-  //         }
-  //       }
-
-  //       //submit new value on blur or change
-  //       input.addEventListener("blur", onChange);
-
-  //       return input;
-  //     };
-
-  //     // Show table on page load
-  //     getClassTable();
+      // Show table on page load
+      getClassTable();
 });
