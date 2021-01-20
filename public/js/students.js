@@ -3,15 +3,17 @@ $(document).ready(() => {
   let table;
   // eslint-disable-next-line prefer-const
   let dateEditor;
+  let defineStudioId = 0;
   // Adding new student to database
-  $("#registerStudent").on("click", () => {
+  $("#registerStudent").on("click", e => {
+    e.preventDefault();
+
     // eslint-disable-next-line prefer-const
 
     // Grab the studio name (string) that was registered with the student.
     // Then convert it to a studio_id (integer) so that the students table can be linked to the studios table.
-    const studioName = $("#inputStudio")
-      .find(":selected")
-      .text();
+    // eslint-disable-next-line prettier/prettier
+    let studioName = $("#inputStudio").val();
 
     switch (studioName) {
       case "La Mesa":
@@ -39,6 +41,7 @@ $(document).ready(() => {
         .text(),
       inputStudio: defineStudioId
     };
+
     $.ajax("/api/students", {
       type: "POST",
       data: postData
@@ -94,15 +97,15 @@ $(document).ready(() => {
           }
         },
         {
-          title: "Studio Id",
-          field: "studio_id",
+          title: "Studio",
+          field: "Studio.studio_name",
           editor: "select",
           editorParams: {
-            "1": 1,
+            "La Mesa": "La Mesa",
             // eslint-disable-next-line prettier/prettier
-            "2": 2,
+            "Santee": "Santee",
             // eslint-disable-next-line prettier/prettier
-            "3": 3
+            "Bonita": "Bonita"
           }
         }
       ]
@@ -140,7 +143,7 @@ $(document).ready(() => {
       url: "/api/students",
       data: row
     }).then(() => {
-      location.reload();
+      //location.reload();
     });
   }
 
