@@ -128,8 +128,21 @@ $(document).ready(() => {
           newData[i].first_name !== currentData[i].first_name ||
           newData[i].date_of_birth !== currentData[i].date_of_birth ||
           newData[i].student_status !== currentData[i].student_status ||
-          newData[i].studio_id !== currentData[i].studio_id
+          newData[i].Studio.studio_name !== currentData[i].Studio.studio_name
         ) {
+          switch (newData[i].Studio.studio_name) {
+            case "La Mesa":
+              newData[i].Studio.id = 1;
+              newData[i].studio_id = 1;
+              break;
+            case "Santee":
+              newData[i].Studio.id = 2;
+              newData[i].studio_id = 2;
+              break;
+            case "Bonita":
+              newData[i].Studio.id = 3;
+              newData[i].studio_id = 3;
+          }
           updateData(newData[i]);
         }
       }
