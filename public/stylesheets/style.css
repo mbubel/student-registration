@@ -1,4 +1,55 @@
-form.signup,
-form.login {
-  margin-top: 50px;
+#submitButton, #loginButton {
+  margin-top: 4%;
+}
+
+.front-page-body {
+  background-color: #B7E9F7;
+  height: 100vh;
+}
+
+.front-image {
+  height: 150px;
+  background-image: url(../assets/images/front-image.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.front-page-top-container {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.front-page-middle-container {
+  background-color: #ffe7ce;
+}
+
+#dashboard-container {
+  text-align: center;
+}
+li {
+  list-style: none;
+  margin-top: 1%;
+  margin-right: 3%;
+}  
+
+img {
+  height: 100px;
+  width: 300px;
+}
+
+#newStudentRegistration {
+  margin-top: 3%;
+  text-align: center;
+}
+
+#navLogo {
+  height: 50px;
+  width: 150px;
+  position: absolute;
+  left: calc((180% - 195px) / 2);
+
+}
+
+#navBar {
+border-bottom: 2px solid black ;
 }

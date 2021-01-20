@@ -4,21 +4,21 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
-      }
+        len: [1],
+      },
     },
 
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
-      }
+        len: [1],
+      },
     },
 
     date_of_birth: {
       type: DataTypes.DATEONLY,
-      allowNull: false
+      allowNull: false,
     },
 
     student_status: {

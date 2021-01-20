@@ -1,54 +1,111 @@
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-light" id="navBar">
+    <a class="navbar-brand" href="/dashboard">
+            <button class="btn btn-primary">Home</button>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <button class="btn btn-primary">Classes</button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <button class="btn btn-primary">Button3</button>
+          </a>
+        </li>
+        <img src="/assets/images/Logo.png" id="navLogo">
+
+
+      </ul>
+    </div>
+  </nav>
+</header>
+
 <body>
-
-  <h1>WORKING!! STUDENT PAGE! AWESOME~~~~~~</h1>
-
   <div class="container">
+    <h1 id="newStudentRegistration">
+      New Student Registration
+    </h1>
     <form class="row g-3">
       <div class="col-md-6">
-        <label for="firstName" class="form-label">First Name</label>
+        <label for="firstName" class="form-label">
+          First Name
+        </label>
         <input type="text" class="form-control" id="firstName" />
       </div>
       <div class="col-md-6">
-        <label for="lastName" class="form-label">Last Name</label>
+        <label for="lastName" class="form-label">
+          Last Name
+        </label>
         <input type="text" class="form-control" id="lastName" />
       </div>
       <div class="col-md-12">
-        <label for="birthdate" class="form-label">Birthdate</label>
+        <label for="birthdate" class="form-label">
+          Birthdate
+        </label>
         <input type="date" class="form-control" id="birthdate" />
       </div>
       <div class="col-md-4">
-        <label for="inputStatus" class="form-label">Student Status</label>
+        <label for="inputStatus" class="form-label">
+          Student Status
+        </label>
         <select id="inputStatus" class="form-select">
-          <option selected>Choose...</option>
-          <option value="Intro">Intro</option>
-          <option value="Current">Current</option>
-          <option value="On a Break">On a Break</option>
-          <option value="Done">Done</option>
+          <option selected>
+            Choose...
+          </option>
+          <option value="Intro">
+            Intro
+          </option>
+          <option value="Current">
+            Current
+          </option>
+          <option value="On a Break">
+            On a Break
+          </option>
+          <option value="Done">
+            Done
+          </option>
         </select>
       </div>
       <div class="col-md-4">
-        <label for="inputStudio" class="form-label">Studio</label>
+        <label for="inputStudio" class="form-label">
+          Studio
+        </label>
         <select id="inputStudio" class="form-select">
-          <option selected>Choose...</option>
-          <option value="La Mesa">La Mesa</option>
-          <option value="Santee">Santee</option>
-          <option value="Bonita">Bonita</option>
+          <option selected>
+            Choose...
+          </option>
+          <option value="La Mesa">
+            La Mesa
+          </option>
+          <option value="Santee">
+            Santee
+          </option>
+          <option value="Bonita">
+            Bonita
+          </option>
         </select>
       </div>
       <div class="col-md-12">
-        <button type="submit" class="btn btn-primary" id="registerStudent">Register Student</button>
+        <button type="submit" class="btn btn-primary" id="registerStudent">
+          Register Student
+        </button>
       </div>
     </form>
   </div>
-  
   <div class="container mt-5">
     <div id="student-table"></div>
-    <button type="button" class="btn btn-primary mt-2" id="save">Save</button>
+    <button type="button" class="btn btn-primary mt-2" id="save">
+      Save
+    </button>
   </div>
-
-
-
   <!-- Student script -->
   <script type="text/javascript" src="js/students.js"></script>
-
 </body>

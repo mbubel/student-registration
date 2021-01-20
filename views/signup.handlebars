@@ -1,20 +1,27 @@
-<body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
+<div class="front-page-body mt-0">
+  <div class="container-fluid front-page-top-container text-center mt-3 pb-4">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="front-image"></div>
       </div>
     </div>
-  </nav>
-  <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Sign Up Form</h2>
+      <div class="col-md-8 offset-md-2">
+        <div id="signup-quote" class="mt-3 fw-light"></div>
+        <div id="signup-author" class="fst-italic fw-light"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid front-page-middle-container text-center mt-5 py-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2>Sign Up!</h2>
         <form class="signup">
-          <div class="form-group">
+          <div class="form-group text-start">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="email-input" placeholder="Email">
           </div>
-          <div class="form-group">
+          <div class="form-group text-start">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="password-input" placeholder="Password">
           </div>
@@ -22,7 +29,7 @@
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span> <span class="msg"></span>
           </div>
-          <button type="submit" class="btn btn-default">Sign Up</button>
+          <button type="submit" class="btn btn-info" id="submitButton">Sign Up</button>
         </form>
         <br />
         <p>Or log in <a href="/login">here</a></p>
@@ -30,5 +37,4 @@
     </div>
   </div>
   <script type="text/javascript" src="js/signup.js"></script>
-
-</body>
+</div>
