@@ -7,21 +7,24 @@ button {
 
 /* Login and Signup pages*/
 .front-page-body {
-  background-color: #b7e9f7;
+  background-color: #5bc0de;
   height: 100vh;
 }
 .front-image {
-  height: 150px;
-  background-image: url(../assets/images/front-image.jpg);
-  background-size: cover;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 175px;
+  background-image: url(../assets/images/Art-Larisse-Logo_DashboardLogo_02.png);
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
 }
 .front-page-top-container {
-  background-color: white;
+  background-color: #5bc0de;
   border-radius: 5px;
 }
 .front-page-middle-container {
-  background-color: #ffe7ce;
+  background-color:white;
 }
 #submitButton,
 #loginButton {
@@ -79,4 +82,17 @@ img {
 
 #teacher {
   width: auto;
+}
+
+.chalkboard {
+  border-radius: 16px;
+  height: auto;
+  background-image: url(../assets/images/chalkboard-background.jpg);
+}
+
+#signup-quote, 
+#signup-author {
+  color: white;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
 }
