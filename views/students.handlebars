@@ -75,10 +75,10 @@
         </select>
       </div>
       <div class="col-12">
-        <label for="specific-class" class="form-label">
+        <label for="class-id" class="form-label">
           Class Time
         </label>
-        <select name="specific-class" class="form-select" id="specific-class">
+        <select name="class-id" class="form-select" id="class-id">
           {{#each dbAvailableClasses}}
             <option value={{dataValues.id}}>
               {{#if (checkStudio1 dataValues.studio_id)}}La Mesa{{/if}}
