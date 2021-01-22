@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     class_id: {
-      type:DataTypes.INT,
+      type:DataTypes.INTEGER,
       allowNull: false,
       validate: {
         len:[1]
