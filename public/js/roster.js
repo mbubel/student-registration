@@ -14,6 +14,10 @@ function addToTabulatorTable(tableData) {
     layout: "fitColumns", //fit columns to width of table
     columns: [
       {
+        title: "Studio",
+        field: "Studio.studio_name"
+      },
+      {
         title: "Class Day",
         field: "AvailableClass.day_of_week"
       },
