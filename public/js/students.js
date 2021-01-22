@@ -5,7 +5,7 @@ $(document).ready(() => {
   let dateEditor;
   let defineStudioId = 0;
   // Adding new student to database
-  $("#registerStudent").on("click", e => {
+  $("#registerStudent").on("click", (e) => {
     e.preventDefault();
 
     // eslint-disable-next-line prefer-const
@@ -39,12 +39,15 @@ $(document).ready(() => {
       inputStatus: $("#inputStatus")
         .find(":selected")
         .text(),
-      inputStudio: defineStudioId
+      inputStudio: defineStudioId,
+      class_id: $("#class-id")
+        .val()
+        .trim(),
     };
 
     $.ajax("/api/students", {
       type: "POST",
-      data: postData
+      data: postData,
     }).then(() => {
       location.reload();
       //alert("we figgured it out");
@@ -53,7 +56,7 @@ $(document).ready(() => {
 
   // Getting data
   function getStudentTable() {
-    $.get("/api/students", data => {
+    $.get("/api/students", (data) => {
       // Calls function to add the data to table
       addToTabulatorTable(data);
     });
@@ -69,19 +72,19 @@ $(document).ready(() => {
           title: "First Name",
           field: "first_name",
           editor: "input",
-          validator: ["required", "string"]
+          validator: ["required", "string"],
         },
         {
           title: "Last Name",
           field: "last_name",
           editor: "input",
-          validator: ["required", "string"]
+          validator: ["required", "string"],
         },
         {
           title: "Date of Birth",
           field: "date_of_birth",
           editor: dateEditor,
-          validator: "required"
+          validator: "required",
         },
         {
           title: "Status",
@@ -90,11 +93,11 @@ $(document).ready(() => {
           editorParams: {
             Intro: "Intro",
             // eslint-disable-next-line prettier/prettier
-            "Current": "Current",
+            Current: "Current",
             "On a Break": "On a Break",
             // eslint-disable-next-line prettier/prettier
-            "Done": "Done"
-          }
+            Done: "Done",
+          },
         },
         {
           title: "Studio",
@@ -103,12 +106,12 @@ $(document).ready(() => {
           editorParams: {
             "La Mesa": "La Mesa",
             // eslint-disable-next-line prettier/prettier
-            "Santee": "Santee",
+            Santee: "Santee",
             // eslint-disable-next-line prettier/prettier
-            "Bonita": "Bonita"
-          }
-        }
-      ]
+            Bonita: "Bonita",
+          },
+        },
+      ],
     });
   }
 
@@ -117,7 +120,7 @@ $(document).ready(() => {
     // eslint-disable-next-line prefer-const
     let newData = table.getData();
 
-    $.get("/api/students", data => {
+    $.get("/api/students", (data) => {
       // Updates current saved data
       // eslint-disable-next-line prefer-const
       let currentData = data;
@@ -154,7 +157,7 @@ $(document).ready(() => {
     $.ajax({
       method: "PUT",
       url: "/api/students",
-      data: row
+      data: row,
     }).then(() => {
       //location.reload();
     });

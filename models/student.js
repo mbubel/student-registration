@@ -27,6 +27,13 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
+    },
+    class_id: {
+      type:DataTypes.INT,
+      allowNull: false,
+      validate: {
+        len:[1]
+      }
     }
   });
 
