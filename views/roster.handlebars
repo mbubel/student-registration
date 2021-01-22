@@ -1,5 +1,4 @@
 <div class="container-fluid">
-<h1>Test</h1>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light" id="navBar">
         <a class="navbar-brand" href="/dashboard">
@@ -32,16 +31,12 @@
         </div>
     </nav>
 </header>
-<select name="specific-class" id="specific-class">
-    {{#each dbAvailableClasses}}
-        {{#if (checkDay dataValues.day_of_week)}}
-            <option>
-                {{#if (checkStudio1 dataValues.studio_id)}}La Mesa{{/if}}
-                {{#if (checkStudio2 dataValues.studio_id)}}Santee{{/if}}
-                {{#if (checkStudio3 dataValues.studio_id)}}Bonita{{/if}} with {{dataValues.teacher}} between {{dataValues.start_time}} and {{dataValues.end_time}}</option>
-        {{/if}}
-    {{/each}}
-</select>
+<h1>Test</h1>
+
+
+
+<div id="roster-table"></div>
+
 </div>
   <!-- Attendance script -->
-  <script type="text/javascript" src="js/attendance.js"></script>
+  <script type="text/javascript" src="js/roster.js"></script>

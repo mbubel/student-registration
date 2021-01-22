@@ -40,9 +40,9 @@ $(document).ready(() => {
         .find(":selected")
         .text(),
       inputStudio: defineStudioId,
-      class_id: $("#class-id")
+      classId: $("#classId")
+        .find(":selected")
         .val()
-        .trim(),
     };
 
     $.ajax("/api/students", {

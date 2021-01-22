@@ -106,11 +106,6 @@ $(document).ready(() => {
               title: "Teacher",
               field: "teacher",
             },
-            {
-              formatter:"buttonCross",
-              width:30,
-              hozAlign:"center",
-              cellClick: deleteRow}
           ]
         });
       }
@@ -158,18 +153,6 @@ $(document).ready(() => {
           location.reload();
         });
       }
-
-      //Deleting
-      function deleteRow(e, cell) {
-        let cellId = cell.getRow().getData().id;
-        $.ajax({
-          method: "DELETE",
-          url: "/api/classes/" + cellId
-        }).then(() => {
-          location.reload();
-        });
-      }
-
 
       // Show table on page load
       getClassTable();
