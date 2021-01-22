@@ -37,9 +37,9 @@ module.exports = function(sequelize, DataTypes) {
     Student.belongsTo(models.Studio, {
       foreignKey: "studio_id"
     });
-    Student.belongsTo(models.AvailableClasses, {
-      foreignKey: "class_id"
-    });
+    // Student.belongsTo(models.AvailableClasses, {
+    //   foreignKey: "class_id"
+    // });
   };
 
   return Student;

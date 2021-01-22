@@ -34,6 +34,9 @@ module.exports = function(sequelize, DataTypes) {
     AvailableClasses.belongsTo(models.Studio, {
       foreignKey: "studio_id"
     });
+    AvailableClasses.hasMany(models.Student, {
+      foreignKey: "class_id"
+    });
   };
 
   return AvailableClasses;

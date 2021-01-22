@@ -2,31 +2,50 @@ $(document).ready(() => {
   $("#classRoster").on("click", e => {
     e.preventDefault();
 
-    const postData = {
+    const sortedClassDay = {
       studioName: $("#studio")
         .find(":selected")
-        .text(),
-      firstName: $("#day")
+        .val()
+        .trim(),
+      classDay: $("#day")
         .find(":selected")
-        .text()
+        .val()
+        .trim()
     };
 
-    $.ajax("/api/roster", {
-      type: "POST",
-      data: postData
-    }).then(() => {
-      location.reload();
-      alert("we figgured it out");
+    console.log(
+      "##### Let's see what we have : " +
+        sortedClassDay.studioName +
+        " " +
+        sortedClassDay.classDay
+    );
+
+    console.log(sortedClassDay);
+    // $.get("/api/roster", sortedClassDay).then(classesForDay => {
+    //   // location.reload();
+    //   addToTabulatorRosterTable(classesForDay);
+    //   alert("I figured it out");
+    // });
+
+    $.ajax({
+      url: "/api/roster",
+      type: "GET",
+      data: sortedClassDay,
+      contentType: "application/json"
+    }).then(classesForDay => {
+      // location.reload();
+      addToTabulatorRosterTable(classesForDay);
+      alert("I figured it out");
     });
   });
 
   // Getting data
-  function getRosterTable() {
-    $.get("/api/rosters", data => {
-      // Calls function to add the data to table
-      addToTabulatorRosterTable(data);
-    });
-  }
+  // function getRosterTable() {
+  //   $.get("/api/rosters", data => {
+  //     // Calls function to add the data to table
+  //     addToTabulatorRosterTable(data);
+  //   });
+  // }
 
   // Adding data to page using Tabulator
   function addToTabulatorRosterTable(tableData) {
@@ -68,5 +87,5 @@ $(document).ready(() => {
     });
   }
 
-  getRosterTable();
+  // getRosterTable();
 });

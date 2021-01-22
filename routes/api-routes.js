@@ -48,10 +48,20 @@ module.exports = function(app) {
     }
   });
 
-  // Route for getting student data for table
+  // Route for getting student/class data for roster table
   app.get("/api/roster", (req, res) => {
+    console.log(req.body);
     db.AvailableClasses.findAll({
-      include: [db.Studio, db.Student]
+      include: [
+        { model: db.Studio },
+        { model: db.Student }
+        //   where: { studio_name: "La Mesa" }
+        // },
+        // {
+        //   model: db.AvailableClasses,
+        //   where: { day_of_week: "Wednesday" }
+        // }
+      ]
     }).then(dbRoster => {
       res.json(dbRoster);
     });
@@ -67,6 +77,7 @@ module.exports = function(app) {
   });
   // Route for posting student data
   app.post("/api/students", (req, res) => {
+    console.log("OOOOOOOO Let's see what we have : " + req.body);
     db.Student.create({
       last_name: req.body.lastName,
       first_name: req.body.firstName,
