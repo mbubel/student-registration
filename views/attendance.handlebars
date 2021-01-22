@@ -1,5 +1,37 @@
+<div class="container-fluid">
 <h1>Test</h1>
-
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light" id="navBar">
+        <a class="navbar-brand" href="/dashboard">
+            <button class="btn btn-primary">
+                Home
+            </button>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/students">
+                        <button class="btn btn-primary">
+                            New Student Registration
+                        </button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <button class="btn btn-primary">
+                            Button Three
+                        </button>
+                    </a>
+                </li>
+                <img src="/assets/images/AWL_Nav_Bar_Brand_Logo.png" id="navLogo" />
+            </ul>
+        </div>
+    </nav>
+</header>
 <select name="specific-class" id="specific-class">
     {{#each dbAvailableClasses}}
         {{#if (checkDay dataValues.day_of_week)}}
@@ -10,6 +42,6 @@
         {{/if}}
     {{/each}}
 </select>
-
+</div>
   <!-- Attendance script -->
   <script type="text/javascript" src="js/attendance.js"></script>
