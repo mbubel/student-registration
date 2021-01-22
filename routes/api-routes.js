@@ -49,9 +49,18 @@ module.exports = function(app) {
   });
 
   // Route for getting student data for table
+  app.get("/api/roster", (req, res) => {
+    db.AvailableClasses.findAll({
+      include: [db.Studio, db.Student]
+    }).then(dbRoster => {
+      res.json(dbRoster);
+    });
+  });
+
+  // Route for getting student data for table
   app.get("/api/students", (req, res) => {
     db.Student.findAll({
-      include: [db.Studio,db.AvailableClasses]
+      include: [db.Studio, db.AvailableClasses]
     }).then(dbStudent => {
       res.json(dbStudent);
     });
