@@ -28,6 +28,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+
     class_id: {
       type:DataTypes.INTEGER,
       allowNull: false,
