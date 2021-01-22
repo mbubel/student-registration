@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 // Requiring necessary npm packages
 const express = require("express");
 const exphbs = require("express-handlebars");
@@ -24,6 +25,63 @@ app.use(passport.session());
 //Set up Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+// register new handlebars helper function
+const hbs = exphbs.create({});
+hbs.handlebars.registerHelper("checkDay", value => {
+  // eslint-disable-next-line prefer-const
+  let newDate = new Date();
+  let dayOfWeek = newDate.getDay();
+  function formatDayOfWeek() {
+    switch (dayOfWeek) {
+      case 0:
+        dayOfWeek = "Sunday";
+        break;
+      case 1:
+        dayOfWeek = "Monday";
+        break;
+      case 2:
+        dayOfWeek = "Tuesday";
+        break;
+      case 3:
+        dayOfWeek = "Wednesday";
+        break;
+      case 4:
+        dayOfWeek = "Thursday";
+        break;
+      case 5:
+        dayOfWeek = "Friday";
+        break;
+      case 6:
+        dayOfWeek = "Saturday";
+        break;
+      default:
+        console.log("error");
+    }
+  }
+  formatDayOfWeek();
+  if (dayOfWeek === value) {
+    return true;
+    // eslint-disable-next-line no-else-return
+  } else {
+    return false;
+  }
+});
+hbs.handlebars.registerHelper("checkStudio1", value => {
+  if (value === 1) {
+    return true;
+  }
+});
+hbs.handlebars.registerHelper("checkStudio2", value => {
+  if (value === 2) {
+    return true;
+  }
+});
+hbs.handlebars.registerHelper("checkStudio3", value => {
+  if (value === 3) {
+    return true;
+  }
+});
 
 // Requiring our routes
 require("./routes/html-routes.js")(app);
