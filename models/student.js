@@ -27,14 +27,6 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
-    },
-
-    class_id: {
-      type:DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        len:[1]
-      }
     }
   });
 
@@ -44,6 +36,9 @@ module.exports = function(sequelize, DataTypes) {
   Student.associate = function(models) {
     Student.belongsTo(models.Studio, {
       foreignKey: "studio_id"
+    });
+    Student.belongsTo(models.AvailableClasses, {
+      foreignKey: "class_id"
     });
   };
 

@@ -51,7 +51,7 @@ module.exports = function(app) {
   // Route for getting student data for table
   app.get("/api/students", (req, res) => {
     db.Student.findAll({
-      include: [db.Studio]
+      include: [db.Studio,db.AvailableClasses]
     }).then(dbStudent => {
       res.json(dbStudent);
     });
@@ -63,7 +63,8 @@ module.exports = function(app) {
       first_name: req.body.firstName,
       date_of_birth: req.body.birthdate,
       student_status: req.body.inputStatus,
-      studio_id: req.body.inputStudio
+      studio_id: req.body.inputStudio,
+      class_id: req.body.classId
     })
       .then(dbStudent => {
         res.json(dbStudent);
@@ -112,16 +113,6 @@ module.exports = function(app) {
     db.AvailableClasses.update(req.body, {
       where: {
         id: req.body.id
-      }
-    }).then(dbAvailableClasses => {
-      res.json(dbAvailableClasses);
-    });
-  });
-  // Route for deleting class data
-  app.delete("/api/classes/:id", (req, res) => {
-    db.AvailableClasses.destroy({
-      where: {
-        id: req.params.id
       }
     }).then(dbAvailableClasses => {
       res.json(dbAvailableClasses);

@@ -38,11 +38,11 @@ module.exports = function(app) {
     res.render("classes");
   });
 
-  app.get("/attendance", isAuthenticated, (req, res) => {
+  app.get("/roster", isAuthenticated, (req, res) => {
     db.AvailableClasses.findAll({
       include: [db.Studio]
     }).then(dbAvailableClasses => {
-      res.render("attendance", {
+      res.render("roster", {
         dbAvailableClasses: dbAvailableClasses
       });
     });
