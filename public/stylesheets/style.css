@@ -4,6 +4,9 @@ button {
   text-align: center;
 }
 
+.dashboard-button {
+  width: 150px;
+}
 
 /* Login and Signup pages*/
 .front-page-body {

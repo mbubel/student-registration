@@ -1,16 +1,5 @@
 <body id="dashboard-body">
-  <div id="buttons">
-
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/logout">
-            Logout
-          </a>
-        </div>
-      </div>
-    </nav>
-    
+  <div id="buttons">    
     <div class="container text-center">
       <img class="mt-4" src="/assets/images/Art-Larisse-Logo_DashboardLogo.png" id="dashBoardLogo" />
     </div>
@@ -20,31 +9,38 @@
 
       <div class="row">
         <div class="my-4">
-          <h1 class="text-decoration-underline">Welcome, <span class="member-name"></span>!</h1>
+          <h1>Welcome, <span class="member-name"></span>!</h1>
         </div>
       </div>
 
       <div class="row align-items-center mt-4 pb-5">
         <div class="col-5 text-start pb-5">
           <ul>
-            <li class="mb-3">
+            <li class="mb-3 btn-lg btn-block">
               <a href="/students">
-                <button class="btn btn-info">
+                <button class="btn btn-info dashboard-button">
                   Manage Students
                 </button>
               </a>
             </li>
-            <li li class="mb-3">
+            <li li class="mb-3 btn-lg btn-block">
               <a href="/classes">
-                <button class="btn btn-info">
+                <button class="btn btn-info dashboard-button">
                   Manage Classes
                 </button>
               </a>
             </li>
-            <li li class="mb-3">
+            <li li class="mb-3 btn-lg btn-block">
+              <a href="/roster">
+                <button class="btn btn-info dashboard-button">
+                  Class Roster
+                </button>
+              </a>
+            </li>
+            <li li class="mb-3 btn-lg btn-block">
               <a href="/attendance">
-                <button class="btn btn-info">
-                  Take Attendance
+                <button class="btn btn-danger btn-info dashboard-button">
+                  Logout
                 </button>
               </a>
             </li>
