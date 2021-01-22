@@ -1,32 +1,29 @@
 /* eslint-disable camelcase */
-// Requiring our models and passport as we've configured it
+// Requiring our models and passport
 const db = require("../models");
 const passport = require("../config/passport");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
-  // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id,
+      id: req.user.id
     });
   });
 
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
+  // Route for signing up a user. The user's password is automatically hashed and stored securely. If the user is created successfully, proceed to log the user in
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password,
+      password: req.body.password
     })
       .then(() => {
         res.redirect(307, "/api/login");
       })
-      .catch((err) => {
+      .catch(err => {
         res.status(401).json(err);
       });
   });
@@ -34,7 +31,7 @@ module.exports = function(app) {
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect("/login");
   });
 
   // Route for getting some data about our user to be used client side
@@ -44,10 +41,9 @@ module.exports = function(app) {
       res.json({});
     } else {
       // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id,
+        id: req.user.id
       });
     }
   });
@@ -55,8 +51,8 @@ module.exports = function(app) {
   // Route for getting student data for table
   app.get("/api/students", (req, res) => {
     db.Student.findAll({
-      include: [db.Studio],
-    }).then((dbStudent) => {
+      include: [db.Studio]
+    }).then(dbStudent => {
       res.json(dbStudent);
     });
   });
@@ -67,12 +63,12 @@ module.exports = function(app) {
       first_name: req.body.firstName,
       date_of_birth: req.body.birthdate,
       student_status: req.body.inputStatus,
-      studio_id: req.body.inputStudio,
+      studio_id: req.body.inputStudio
     })
-      .then((dbStudent) => {
+      .then(dbStudent => {
         res.json(dbStudent);
       })
-      .catch((err) => {
+      .catch(err => {
         res.status(401).json(err);
       });
   });
@@ -80,23 +76,23 @@ module.exports = function(app) {
   app.put("/api/students", (req, res) => {
     db.Student.update(req.body, {
       where: {
-        id: req.body.id,
-      },
-    }).then((dbStudent) => {
+        id: req.body.id
+      }
+    }).then(dbStudent => {
       res.json(dbStudent);
     });
   });
 
+  // Route for getting classes data
   app.get("/api/classes", (req, res) => {
     db.AvailableClasses.findAll({
-      include: [db.Studio],
-    }).then((dbAvailableClasses) => {
+      include: [db.Studio]
+    }).then(dbAvailableClasses => {
       res.json(dbAvailableClasses);
     });
-  })
+  });
+  // Route for posting class data
   app.post("/api/classes", (req, res) => {
-    console.log(req.body);
-
     db.AvailableClasses.create({
       studio_id: req.body.studio,
       day_of_week: req.body.day,
@@ -104,30 +100,31 @@ module.exports = function(app) {
       end_time: req.body.end_time,
       teacher: req.body.teacher
     })
-      .then((dbAvailableClasses) => {
+      .then(dbAvailableClasses => {
         res.json(dbAvailableClasses);
       })
-      .catch((err) => {
+      .catch(err => {
         res.status(401).json(err);
       });
   });
+  // Route for updating class data
   app.put("/api/classes", (req, res) => {
     db.AvailableClasses.update(req.body, {
       where: {
-        id: req.body.id,
-      },
-    }).then((dbAvailableClasses) => {
+        id: req.body.id
+      }
+    }).then(dbAvailableClasses => {
       res.json(dbAvailableClasses);
     });
   });
+  // Route for deleting class data
   app.delete("/api/classes/:id", (req, res) => {
     db.AvailableClasses.destroy({
       where: {
         id: req.params.id
       }
-    }).then((dbAvailableClasses) => {
+    }).then(dbAvailableClasses => {
       res.json(dbAvailableClasses);
     });
   });
-  
 };
