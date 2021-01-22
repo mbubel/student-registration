@@ -1,5 +1,6 @@
 // Requiring middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const db = require("../models");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
@@ -24,7 +25,13 @@ module.exports = function(app) {
   });
 
   app.get("/students", isAuthenticated, (req, res) => {
-    res.render("students");
+    db.AvailableClasses.findAll({
+      include: [db.Studio]
+    }).then(dbAvailableClasses => {
+      res.render("students", {
+        dbAvailableClasses: dbAvailableClasses
+      });
+    });
   });
 
   app.get("/classes", isAuthenticated, (req, res) => {
@@ -32,6 +39,12 @@ module.exports = function(app) {
   });
 
   app.get("/attendance", isAuthenticated, (req, res) => {
-    res.render("attendance");
+    db.AvailableClasses.findAll({
+      include: [db.Studio]
+    }).then(dbAvailableClasses => {
+      res.render("attendance", {
+        dbAvailableClasses: dbAvailableClasses
+      });
+    });
   });
 };

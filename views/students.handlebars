@@ -74,6 +74,20 @@
           <option value="Bonita">Bonita</option>
         </select>
       </div>
+      <div class="col-12">
+        <label for="specific-class" class="form-label">
+          Class Time
+        </label>
+        <select name="specific-class" class="form-select" id="specific-class">
+          {{#each dbAvailableClasses}}
+            <option value={{dataValues.id}}>
+              {{#if (checkStudio1 dataValues.studio_id)}}La Mesa{{/if}}
+              {{#if (checkStudio2 dataValues.studio_id)}}Santee{{/if}}
+              {{#if (checkStudio3 dataValues.studio_id)}}Bonita{{/if}} with {{dataValues.teacher}} between {{dataValues.start_time}} and {{dataValues.end_time}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
       <div class="col-md-12">
         <button type="submit" class="btn btn-primary" id="registerStudent">
           Register Student
