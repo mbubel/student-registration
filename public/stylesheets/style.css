@@ -108,3 +108,7 @@ img {
 #classRoster {
   margin-top: 32px;
 }
+
+#rosterBackground{
+  background-image: url(../assets/images/textured_off_white_bg.jpg);
+}

@@ -161,6 +161,9 @@ $(document).ready(() => {
       }
     });
   }
+  // Call function to get and display curreny day/date on the roster page
   displayCurrentDate();
+
+  // Call function to display class rosters on the screen for the current day
   setRostersCurrentDay();
 });
