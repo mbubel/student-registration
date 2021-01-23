@@ -50,7 +50,6 @@ module.exports = function(app) {
 
   // Route for getting student/class data for roster table
   app.get("/api/roster", (req, res) => {
-    console.log(req.body);
     db.AvailableClasses.findAll({
       where: { day_of_week: req.query.classDay },
       include: [

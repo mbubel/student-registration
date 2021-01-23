@@ -99,3 +99,12 @@ img {
   font-size: 18px;
   font-family: 'Courier New', Courier, monospace;
 }
+
+#displayRoster {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#classRoster {
+  margin-top: 32px;
+}
