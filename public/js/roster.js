@@ -1,5 +1,4 @@
 $(document).ready(() => {
-
   let table;
   let subTable;
 
@@ -86,8 +85,8 @@ $(document).ready(() => {
       ],
       rowFormatter: function(row) {
         //create and style holder elements
-        var holderEl = document.createElement("div");
-        var tableEl = document.createElement("div");
+        const holderEl = document.createElement("div");
+        const tableEl = document.createElement("div");
 
         holderEl.style.boxSizing = "border-box";
         holderEl.style.padding = "10px 30px 10px 10px";

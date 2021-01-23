@@ -52,8 +52,9 @@ module.exports = function(app) {
   app.get("/api/roster", (req, res) => {
     console.log(req.body);
     db.AvailableClasses.findAll({
+      where: { day_of_week: "Monday" },
       include: [
-        { model: db.Studio },
+        { model: db.Studio, where: { studio_name: "La Mesa" } },
         { model: db.Student }
         //   where: { studio_name: "La Mesa" }
         // },
