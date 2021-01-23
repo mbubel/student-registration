@@ -61,6 +61,16 @@ module.exports = function(app) {
     });
   });
 
+  // Route for getting student/class data for roster table
+  app.get("/api/currentRoster", (req, res) => {
+    db.AvailableClasses.findAll({
+      where: { day_of_week: req.query.classDay },
+      include: [{ model: db.Studio }, { model: db.Student }]
+    }).then(dbRoster => {
+      res.json(dbRoster);
+    });
+  });
+
   // Route for getting student data for table
   app.get("/api/students", (req, res) => {
     db.Student.findAll({

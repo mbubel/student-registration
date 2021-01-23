@@ -2,6 +2,38 @@ $(document).ready(() => {
   let table;
   let subTable;
 
+  function findCurrentDay() {
+    var dayOfWeek;
+    var m = moment().day();
+    console.log("The day of the week is:");
+    console.log(m);
+    switch (m) {
+      case 0:
+        dayOfWeek = "Sunday";
+        break;
+      case 1:
+        dayOfWeek = "Monday";
+        break;
+      case 2:
+        dayOfWeek = "Tuesday";
+        break;
+      case 3:
+        dayOfWeek = "Wednesday";
+        break;
+      case 4:
+        dayOfWeek = "Thursday";
+        break;
+      case 5:
+        dayOfWeek = "Friday";
+        break;
+      case 6:
+        dayOfWeek = "Saturday";
+    }
+    console.log("we are in the switch");
+    console.log(dayOfWeek);
+    return dayOfWeek;
+  }
+
   // On click event waiting for user to click on the find class rosters button
   $("#classRoster").on("click", e => {
     e.preventDefault();
@@ -31,6 +63,19 @@ $(document).ready(() => {
       addToTabulatorRosterTable(classesForDay);
     });
   });
+
+  function setRostersCurrentDay() {
+    var dayofweek = findCurrentDay();
+    console.log("We are in set urrent asdfas");
+    console.log(dayofweek);
+    $.ajax({
+      url: "/api/currentRoster?classDay=" + dayofweek,
+      type: "GET"
+    }).then(classesForDay => {
+      // location.reload();
+      addToTabulatorRosterTable(classesForDay);
+    });
+  }
 
   // Adding roster data to page using Tabulator and nested tables.
   // The main table (table) is the class details table.
@@ -101,6 +146,5 @@ $(document).ready(() => {
       }
     });
   }
-
-  // getRosterTable();
+  setRostersCurrentDay();
 });
