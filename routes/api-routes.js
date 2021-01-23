@@ -52,16 +52,10 @@ module.exports = function(app) {
   app.get("/api/roster", (req, res) => {
     console.log(req.body);
     db.AvailableClasses.findAll({
-      where: { day_of_week: "Monday" },
+      where: { day_of_week: req.query.classDay },
       include: [
-        { model: db.Studio, where: { studio_name: "La Mesa" } },
+        { model: db.Studio, where: { studio_name: req.query.studioName } },
         { model: db.Student }
-        //   where: { studio_name: "La Mesa" }
-        // },
-        // {
-        //   model: db.AvailableClasses,
-        //   where: { day_of_week: "Wednesday" }
-        // }
       ]
     }).then(dbRoster => {
       res.json(dbRoster);

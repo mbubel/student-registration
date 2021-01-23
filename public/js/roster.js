@@ -31,10 +31,12 @@ $(document).ready(() => {
     // });
 
     $.ajax({
-      url: "/api/roster",
-      type: "GET",
-      data: sortedClassDay,
-      contentType: "application/json"
+      url:
+        "/api/roster?studioName=" +
+        sortedClassDay.studioName +
+        "&classDay=" +
+        sortedClassDay.classDay,
+      type: "GET"
     }).then(classesForDay => {
       // location.reload();
       addToTabulatorRosterTable(classesForDay);
