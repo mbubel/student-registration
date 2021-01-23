@@ -84,7 +84,7 @@
             <option value={{dataValues.id}}>
               {{#if (checkStudio1 dataValues.studio_id)}}La Mesa{{/if}}
               {{#if (checkStudio2 dataValues.studio_id)}}Santee{{/if}}
-              {{#if (checkStudio3 dataValues.studio_id)}}Bonita{{/if}} with {{dataValues.teacher}} between {{dataValues.start_time}} and {{dataValues.end_time}} on {{dataValues.studio.studio_name}}.
+              {{#if (checkStudio3 dataValues.studio_id)}}Bonita{{/if}} with {{dataValues.teacher}} between {{dataValues.start_time}} and {{dataValues.end_time}} on {{dataValues.day_of_week}}.
             </option>
           {{/each}}
         </select>

@@ -112,3 +112,7 @@ img {
 #rosterBackground{
   background-image: url(../assets/images/textured_off_white_bg.jpg);
 }
+
+.dashboard-image{
+  background-image: url(../assets/images/background-image.jpg)
+}
