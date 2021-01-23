@@ -1,4 +1,8 @@
 $(document).ready(() => {
+
+  let table;
+  let subTable;
+
   $("#classRoster").on("click", e => {
     e.preventDefault();
 
@@ -49,7 +53,13 @@ $(document).ready(() => {
 
   // Adding data to page using Tabulator
   function addToTabulatorRosterTable(tableData) {
+    console.log("This is the tabledata");
+    console.log(tableData);
+
     table = new Tabulator("#roster-table", {
+      height: "auto",
+      layout: "fitColumns",
+      // resizableColumns: false,
       data: tableData, //load row data from array
       layout: "fitColumns", //fit columns to width of table
       columns: [
@@ -59,31 +69,53 @@ $(document).ready(() => {
         },
         {
           title: "Class Day",
-          field: "AvailableClass.day_of_week"
+          field: "day_of_week"
         },
         {
           title: "Start Time",
-          field: "AvailableClass.start_time"
+          field: "start_time"
         },
         {
           title: "End Time",
-          field: "AvailableClass.end_time"
+          field: "end_time"
         },
         {
           title: "Teacher",
-          field: "AvailableClass.teacher"
-        },
-        {
-          title: "Student's First Name",
-          field: "first_name",
-          headerSort: false
-        },
-        {
-          title: "Student's Last Name",
-          field: "last_name",
-          headerSort: false
+          field: "teacher"
         }
-      ]
+      ],
+      rowFormatter: function(row) {
+        //create and style holder elements
+        var holderEl = document.createElement("div");
+        var tableEl = document.createElement("div");
+
+        holderEl.style.boxSizing = "border-box";
+        holderEl.style.padding = "10px 30px 10px 10px";
+        holderEl.style.borderTop = "1px solid #333";
+        holderEl.style.borderBotom = "1px solid #333";
+        holderEl.style.background = "#ddd";
+
+        tableEl.style.border = "1px solid #333";
+
+        holderEl.appendChild(tableEl);
+
+        row.getElement().appendChild(holderEl);
+
+        subTable = new Tabulator(tableEl, {
+          layout: "fitColumns",
+          data: row.getData().Students,
+          columns: [
+            {
+              title: "Student's First Name",
+              field: "first_name"
+            },
+            {
+              title: "Student's Last Name",
+              field: "last_name"
+            }
+          ]
+        });
+      }
     });
   }
 

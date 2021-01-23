@@ -70,7 +70,7 @@ module.exports = function(app) {
   // Route for getting student data for table
   app.get("/api/students", (req, res) => {
     db.Student.findAll({
-      include: [db.Studio, db.AvailableClasses]
+      include: [db.Studio]
     }).then(dbStudent => {
       res.json(dbStudent);
     });
