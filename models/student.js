@@ -25,6 +25,14 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
+    },
+
+    student_level: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     }
   });
 

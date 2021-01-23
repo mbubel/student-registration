@@ -150,6 +150,10 @@ $(document).ready(() => {
             {
               title: "Student's First Name",
               field: "first_name"
+            },
+            {
+              title: "Student Progress Level",
+              field: "student_level"
             }
           ]
         });

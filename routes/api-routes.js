@@ -87,6 +87,7 @@ module.exports = function(app) {
       first_name: req.body.firstName,
       date_of_birth: req.body.birthdate,
       student_status: req.body.inputStatus,
+      student_level: req.body.inputLevel,
       studio_id: req.body.inputStudio,
       class_id: req.body.classId
     })

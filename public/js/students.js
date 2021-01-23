@@ -42,6 +42,9 @@ $(document).ready(() => {
       inputStatus: $("#inputStatus")
         .find(":selected")
         .text(),
+      inputLevel: $("#inputLevel")
+        .find(":selected")
+        .text(),
       inputStudio: defineStudioId,
       classId: $("#classId")
         .find(":selected")
@@ -105,6 +108,16 @@ $(document).ready(() => {
           }
         },
         {
+          title: "Progress Level",
+          field: "student_level",
+          editor: "select",
+          editorParams: {
+            Pastels: "Pastels",
+            Watercolors: "Watercolors",
+            Oils: "Oils"
+          }
+        },
+        {
           title: "Studio",
           field: "Studio.studio_name",
           editor: "select",
@@ -136,6 +149,7 @@ $(document).ready(() => {
           newData[i].first_name !== currentData[i].first_name ||
           newData[i].date_of_birth !== currentData[i].date_of_birth ||
           newData[i].student_status !== currentData[i].student_status ||
+          newData[i].student_level !== currentData[i].student_level ||
           newData[i].Studio.studio_name !== currentData[i].Studio.studio_name
         ) {
           switch (newData[i].Studio.studio_name) {
