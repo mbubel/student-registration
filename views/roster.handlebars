@@ -1,42 +1,105 @@
-<div class="container-fluid">
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light" id="navBar">
-        <a class="navbar-brand" href="/dashboard">
-            <button class="btn btn-primary">
-                Home
+<div class="container-fluid" id="rosterBackground">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light" id="navBar">
+            <a class="navbar-brand" href="/dashboard">
+                <button class="btn btn-primary">
+                    Home
+                </button>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/students">
-                        <button class="btn btn-primary">
-                            New Student Registration
-                        </button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <button class="btn btn-primary">
-                            Button Three
-                        </button>
-                    </a>
-                </li>
-                <img src="/assets/images/AWL_Nav_Bar_Brand_Logo.png" id="navLogo" />
-            </ul>
-        </div>
-    </nav>
-</header>
-<h1>Test</h1>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/students">
+                            <button class="btn btn-primary">
+                                New Student Registration
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <button class="btn btn-primary">
+                                Button Three
+                            </button>
+                        </a>
+                    </li>
+                    <img src="/assets/images/AWL_Nav_Bar_Brand_Logo.png" id="navLogo" />
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    {{!-- Studio dropdown option --}}
+    <div class="container" id="displayRoster">
+        <form class="row g-3">
+            <div class="col-md-2" id="displayDate">
+           
+            </div>
+            <div class="col-md-3">
+                <label for="studio" class="form-label">
+                    Studio
+                </label>
+                <select id="studio" class="form-select">
+                    <option selected>
+                        Choose...
+                    </option>
+                    <option value="La Mesa">
+                        La Mesa
+                    </option>
+                    <option value="Santee">
+                        Santee
+                    </option>
+                    <option value="Bonita">
+                        Bonita
+                    </option>
+                </select>
+            </div>
+            {{!-- Day of the week dropdown option --}}
+            <div class="col-md-3">
+                <label for="day" class="form-label">
+                    Day of the week
+                </label>
+                <select id="day" class="form-select">
+                    <option selected>
+                        Choose...
+                    </option>
+                    <option value="Monday">
+                        Monday
+                    </option>
+                    <option value="Tuesday">
+                        Tuesday
+                    </option>
+                    <option value="Wednesday">
+                        Wednesday
+                    </option>
+                    <option value="Thursday">
+                        Thursday
+                    </option>
+                    <option value="Friday">
+                        Friday
+                    </option>
+                    <option value="Saturday">
+                        Saturday
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary" id="classRoster">
+                    Find Class Rosters
+                </button>
+            </div>
+
+        </form>
+    </div>
 
 
 
-<div id="roster-table"></div>
+    <div id="roster-table"></div>
 
 </div>
-  <!-- Attendance script -->
-  <script type="text/javascript" src="js/roster.js"></script>
+<!-- Attendance script -->
+<script type="text/javascript" src="js/roster.js"></script>

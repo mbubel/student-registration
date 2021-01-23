@@ -48,16 +48,40 @@ module.exports = function(app) {
     }
   });
 
+  // Route for getting student/class data for roster table
+  app.get("/api/roster", (req, res) => {
+    db.AvailableClasses.findAll({
+      where: { day_of_week: req.query.classDay },
+      include: [
+        { model: db.Studio, where: { studio_name: req.query.studioName } },
+        { model: db.Student }
+      ]
+    }).then(dbRoster => {
+      res.json(dbRoster);
+    });
+  });
+
+  // Route for getting student/class data for roster table
+  app.get("/api/currentRoster", (req, res) => {
+    db.AvailableClasses.findAll({
+      where: { day_of_week: req.query.classDay },
+      include: [{ model: db.Studio }, { model: db.Student }]
+    }).then(dbRoster => {
+      res.json(dbRoster);
+    });
+  });
+
   // Route for getting student data for table
   app.get("/api/students", (req, res) => {
     db.Student.findAll({
-      include: [db.Studio,db.AvailableClasses]
+      include: [db.Studio]
     }).then(dbStudent => {
       res.json(dbStudent);
     });
   });
   // Route for posting student data
   app.post("/api/students", (req, res) => {
+    console.log("OOOOOOOO Let's see what we have : " + req.body);
     db.Student.create({
       last_name: req.body.lastName,
       first_name: req.body.firstName,
