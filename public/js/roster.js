@@ -2,9 +2,11 @@ $(document).ready(() => {
   let table;
   let subTable;
 
+  // On click event waiting for user to click on the find class rosters button
   $("#classRoster").on("click", e => {
     e.preventDefault();
 
+    //Define object that holds the class times for the studio and class day the user wants to see.
     const sortedClassDay = {
       studioName: $("#studio")
         .find(":selected")
@@ -16,20 +18,7 @@ $(document).ready(() => {
         .trim()
     };
 
-    console.log(
-      "##### Let's see what we have : " +
-        sortedClassDay.studioName +
-        " " +
-        sortedClassDay.classDay
-    );
-
-    console.log(sortedClassDay);
-    // $.get("/api/roster", sortedClassDay).then(classesForDay => {
-    //   // location.reload();
-    //   addToTabulatorRosterTable(classesForDay);
-    //   alert("I figured it out");
-    // });
-
+    // AJAX GET request to get rosters the for the day and studio entered by the user.
     $.ajax({
       url:
         "/api/roster?studioName=" +
@@ -40,19 +29,12 @@ $(document).ready(() => {
     }).then(classesForDay => {
       // location.reload();
       addToTabulatorRosterTable(classesForDay);
-      alert("I figured it out");
     });
   });
 
-  // Getting data
-  // function getRosterTable() {
-  //   $.get("/api/rosters", data => {
-  //     // Calls function to add the data to table
-  //     addToTabulatorRosterTable(data);
-  //   });
-  // }
-
-  // Adding data to page using Tabulator
+  // Adding roster data to page using Tabulator and nested tables.
+  // The main table (table) is the class details table.
+  // The nested table (subTable) is the table containing the student details who are in that particular class.
   function addToTabulatorRosterTable(tableData) {
     console.log("This is the tabledata");
     console.log(tableData);
@@ -107,12 +89,12 @@ $(document).ready(() => {
           data: row.getData().Students,
           columns: [
             {
-              title: "Student's First Name",
-              field: "first_name"
-            },
-            {
               title: "Student's Last Name",
               field: "last_name"
+            },
+            {
+              title: "Student's First Name",
+              field: "first_name"
             }
           ]
         });
