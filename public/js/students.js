@@ -1,3 +1,6 @@
+/* eslint-disable camelcase */
+/* eslint-disable prefer-const */
+/* eslint-disable indent */
 $(document).ready(() => {
   // Variables
   let table;
@@ -5,7 +8,7 @@ $(document).ready(() => {
   let dateEditor;
   let defineStudioId = 0;
   // Adding new student to database
-  $("#registerStudent").on("click", (e) => {
+  $("#registerStudent").on("click", e => {
     e.preventDefault();
 
     // eslint-disable-next-line prefer-const
@@ -47,7 +50,7 @@ $(document).ready(() => {
 
     $.ajax("/api/students", {
       type: "POST",
-      data: postData,
+      data: postData
     }).then(() => {
       location.reload();
       //alert("we figgured it out");
@@ -56,7 +59,7 @@ $(document).ready(() => {
 
   // Getting data
   function getStudentTable() {
-    $.get("/api/students", (data) => {
+    $.get("/api/students", data => {
       // Calls function to add the data to table
       addToTabulatorTable(data);
     });
@@ -67,24 +70,26 @@ $(document).ready(() => {
     table = new Tabulator("#student-table", {
       data: tableData, //load row data from array
       layout: "fitColumns", //fit columns to width of table
+      pagination: "local", //paginate the data
+      paginationSize: 10, //allow 10 rows per page of data
       columns: [
         {
           title: "First Name",
           field: "first_name",
           editor: "input",
-          validator: ["required", "string"],
+          validator: ["required", "string"]
         },
         {
           title: "Last Name",
           field: "last_name",
           editor: "input",
-          validator: ["required", "string"],
+          validator: ["required", "string"]
         },
         {
           title: "Date of Birth",
           field: "date_of_birth",
           editor: dateEditor,
-          validator: "required",
+          validator: "required"
         },
         {
           title: "Status",
@@ -97,7 +102,7 @@ $(document).ready(() => {
             "On a Break": "On a Break",
             // eslint-disable-next-line prettier/prettier
             Done: "Done",
-          },
+          }
         },
         {
           title: "Studio",
@@ -109,9 +114,9 @@ $(document).ready(() => {
             Santee: "Santee",
             // eslint-disable-next-line prettier/prettier
             Bonita: "Bonita",
-          },
-        },
-      ],
+          }
+        }
+      ]
     });
   }
 
@@ -120,7 +125,7 @@ $(document).ready(() => {
     // eslint-disable-next-line prefer-const
     let newData = table.getData();
 
-    $.get("/api/students", (data) => {
+    $.get("/api/students", data => {
       // Updates current saved data
       // eslint-disable-next-line prefer-const
       let currentData = data;
@@ -157,7 +162,7 @@ $(document).ready(() => {
     $.ajax({
       method: "PUT",
       url: "/api/students",
-      data: row,
+      data: row
     }).then(() => {
       //location.reload();
     });

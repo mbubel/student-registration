@@ -1,26 +1,24 @@
+/* eslint-disable camelcase */
 module.exports = function(sequelize, DataTypes) {
   const Student = sequelize.define("Student", {
     last_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-
     date_of_birth: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: false
     },
-
     student_status: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -37,9 +35,6 @@ module.exports = function(sequelize, DataTypes) {
     Student.belongsTo(models.Studio, {
       foreignKey: "studio_id"
     });
-    // Student.belongsTo(models.AvailableClasses, {
-    //   foreignKey: "class_id"
-    // });
   };
 
   return Student;

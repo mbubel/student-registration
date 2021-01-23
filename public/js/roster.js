@@ -1,7 +1,6 @@
+/* eslint-disable indent */
+/* eslint-disable prefer-const */
 $(document).ready(() => {
-  let table;
-  let subTable;
-
   // Function to get current date to display on roster page.
   function displayCurrentDate() {
     const currentDay = findCurrentDay();
@@ -10,17 +9,13 @@ $(document).ready(() => {
     const MM = tdate.getMonth(); //yields month
     const yyyy = tdate.getFullYear(); //yields year
     const currentDate = currentDay + " " + (MM + 1) + "/" + dd + "/" + yyyy;
-    $("#displayDate")
-      .append("<p> Today is: </p>")
-      .append("<p>" + currentDate + "</p>");
+    $("#displayDate").append(`<p> Today is: ${currentDate}</p>`);
   }
 
   // Function to convert day of the week (number) from moment.js to text. E.g. 4 = Thursday.
   function findCurrentDay() {
-    var dayOfWeek;
-    var m = moment().day();
-    console.log("The day of the week is:");
-    console.log(m);
+    let dayOfWeek;
+    let m = moment().day();
     switch (m) {
       case 0:
         dayOfWeek = "Sunday";
