@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 module.exports = function(sequelize, DataTypes) {
   const AvailableClasses = sequelize.define("AvailableClasses", {
     day_of_week: {
@@ -7,17 +8,14 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-
     start_time: {
       type: DataTypes.STRING,
       allowNull: false
     },
-
     end_time: {
       type: DataTypes.STRING,
       allowNull: false
     },
-
     teacher: {
       type: DataTypes.STRING,
       allowNull: false,

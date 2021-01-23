@@ -1,3 +1,6 @@
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
 
 button {
   white-space: nowrap;
@@ -10,8 +13,11 @@ button {
 
 /* Login and Signup pages*/
 .front-page-body {
-  background-color: #5bc0de;
+  background-image: url(../assets/images/login-signup-background.jpg);
   height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .front-image {
   margin-top: 30px;
@@ -23,7 +29,6 @@ button {
   background-position: center;
 }
 .front-page-top-container {
-  background-color: #5bc0de;
   border-radius: 5px;
 }
 .front-page-middle-container {
@@ -36,12 +41,17 @@ button {
 
 /* Dashboard page */
 #dashboard-body {
-  background-color: #b7e9f7;
+  background-image: url(../assets/images/background-image.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 #dashboard-container {
   text-align: center;
   background-color: white;
   border-radius: 5px;
+  width: 50rem;
 }
 #added-artwork {
   height: 25rem;
@@ -62,7 +72,6 @@ img {
 }
 
 #newStudentRegistration {
-  margin-top: 3%;
   text-align: center;
 }
 
@@ -109,10 +118,19 @@ img {
   margin-top: 32px;
 }
 
-#rosterBackground{
+.pagesBackground{
   background-image: url(../assets/images/textured_off_white_bg.jpg);
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-bottom: 5rem;
 }
 
-.dashboard-image{
-  background-image: url(../assets/images/background-image.jpg)
+
+/* Media Queries */
+@media (max-width: 580px) {
+  #dashboard-container {
+    width: 100%;
+  }
 }

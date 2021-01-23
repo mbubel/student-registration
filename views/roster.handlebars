@@ -1,4 +1,4 @@
-<div class="container-fluid" id="rosterBackground">
+<div class="pagesBackground">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light" id="navBar">
             <a class="navbar-brand" href="/dashboard">
@@ -15,14 +15,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/students">
                             <button class="btn btn-primary">
-                                New Student Registration
+                                Manage Students
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/classes">
                             <button class="btn btn-primary">
-                                Button Three
+                                Manage Classes
                             </button>
                         </a>
                     </li>
@@ -34,11 +34,13 @@
     
     {{!-- Studio dropdown option --}}
     <div class="container" id="displayRoster">
-        <form class="row g-3">
-            <div class="col-md-2" id="displayDate">
-           
+        <div class="row text-center mt-3 mb-2">
+            <h1>Select Class To View Roster</h1>
+            <div class="text-center mt-2" id="displayDate">
             </div>
-            <div class="col-md-3">
+        </div>
+        <form class="row g-3">
+            <div class="col-md-4">
                 <label for="studio" class="form-label">
                     Studio
                 </label>
@@ -58,7 +60,7 @@
                 </select>
             </div>
             {{!-- Day of the week dropdown option --}}
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label for="day" class="form-label">
                     Day of the week
                 </label>
@@ -97,8 +99,13 @@
     </div>
 
 
-
+  <div class="container mt-5">
+    <div>
+      <h4>See Roster(s) Below</h4>
+      <p class="fst-italic">Default will show today's classes.  Use the filter options above to change:</p>
+    </div>
     <div id="roster-table"></div>
+  </div>
 
 </div>
 <!-- Attendance script -->

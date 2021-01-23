@@ -14,16 +14,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/students">
                         <button class="btn btn-primary">
-                            New Student Registration
+                            Manage Students
                         </button>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <button class="btn btn-primary">
-                            Button Three
-                        </button>
-                    </a>
+                <a class="nav-link" href="/roster">
+                    <button class="btn btn-primary">Class Rosters</button>
+                </a>
                 </li>
                 <img src="/assets/images/AWL_Nav_Bar_Brand_Logo.png" id="navLogo" />
             </ul>
@@ -31,9 +29,12 @@
     </nav>
 </header>
 
-<body>
+<body class="pagesBackground">
     {{!-- Studio dropdown option --}}
     <div class="container" id="classRegistration">
+        <div class="row text-center mt-3 mb-3">
+            <h1>Add Class</h1>
+        </div>
         <form class="row g-3">
             <div class="col-md-2">
                 <label for="studio" class="form-label">
@@ -55,7 +56,7 @@
                 </select>
             </div>
             {{!-- Day of the week dropdown option --}}
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <label for="day" class="form-label">
                     Day of the week
                 </label>
@@ -176,7 +177,12 @@
 
         </form>
     </div>
-    <div class="container mt-5">
+
+  <div class="container mt-5">
+    <div class="classes-table-header">
+      <h2>Class Information</h2>
+      <p class="fst-italic">*If updating, please click on the save button at the bottom of the list.</p>
+    </div>
     <div id="classes-table"></div>
     <button type="button" class="btn btn-primary mt-2" id="save">
       Save
