@@ -2,6 +2,19 @@ $(document).ready(() => {
   let table;
   let subTable;
 
+  // Function to get current date to display on roster page.
+  function displayCurrentDate() {
+    const currentDay = findCurrentDay();
+    const tdate = new Date();
+    const dd = tdate.getDate(); //yields day
+    const MM = tdate.getMonth(); //yields month
+    const yyyy = tdate.getFullYear(); //yields year
+    const currentDate = currentDay + " " + (MM + 1) + "/" + dd + "/" + yyyy;
+    $("#displayDate")
+      .append("<p> Today is: </p>")
+      .append("<p>" + currentDate + "</p>");
+  }
+
   // Function to convert day of the week (number) from moment.js to text. E.g. 4 = Thursday.
   function findCurrentDay() {
     var dayOfWeek;
@@ -67,7 +80,7 @@ $(document).ready(() => {
 
   // Function (AJAX GET request) to display classes for the current day for all studios. Before the user selects the studio and day they want to see.
   function setRostersCurrentDay() {
-    var dayofweek = findCurrentDay();
+    const dayofweek = findCurrentDay();
     console.log("We are in set urrent asdfas");
     console.log(dayofweek);
     $.ajax({
@@ -148,5 +161,6 @@ $(document).ready(() => {
       }
     });
   }
+  displayCurrentDate();
   setRostersCurrentDay();
 });
