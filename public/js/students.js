@@ -101,10 +101,10 @@ $(document).ready(() => {
           editorParams: {
             Intro: "Intro",
             // eslint-disable-next-line prettier/prettier
-            Current: "Current",
+            "Current Student": "Current Student",
             "On a Break": "On a Break",
             // eslint-disable-next-line prettier/prettier
-            Done: "Done",
+            Done: "Done"
           }
         },
         {
